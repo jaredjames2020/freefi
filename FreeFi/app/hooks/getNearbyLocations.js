@@ -1,8 +1,11 @@
 import { useState } from "react";
 
 export default getNearbyLocations = (data) => {
-  //   const location = useLocation();
-  const location = { latitude: 40.658385, longitude: -73.8875829994 };
+  const userLocation = useLocation();
+  const location = {
+    latitude: userLocation.latitude,
+    longitude: userLocation.longitude,
+  };
   const distanceArray = [];
 
   function distance(lat1, lon1, lat2, lon2, unit) {
