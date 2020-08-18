@@ -1,48 +1,46 @@
 import React from "react";
-import { View, StyleSheet, Text, ScrollView } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  ScrollView,
+  Dimensions,
+  TouchableOpacity,
+  AlertIOS,
+} from "react-native";
 
 import useLocation from "../hooks/useLocation";
 import getData from "../hooks/getData";
 import getNearbyLocations from "../hooks/getNearbyLocations";
 import MapScreen from "./MapScreen";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 function WelcomeScreen(props) {
   const location = useLocation();
   const data = getData();
   const nearbyLocations = getNearbyLocations(data);
-  MapScreen();
+  const screen = Dimensions.get("window");
+
+  const ASPECT_RATIO = screen.width / screen.height;
+  const LATITUDE_DELTA = 0.0922;
+  const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        {data.loading ? (
-          <Text>Loading ...</Text>
-        ) : (
-          <View>
-            {nearbyLocations.map((item) => (
-              <Text key={item.objectid}>{item.name}</Text>
-            ))}
-          </View>
-        )}
-      </ScrollView>
-      <MapView
-        style={{ flex: 1 }}
-        region={{
-          latitude: 42.882004,
-          longitude: 74.582748,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-        showsUserLocation={true}
-      />
-      <Text>YUYUx</Text>
+      <MapScreen />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
 });
 
 export default WelcomeScreen;
