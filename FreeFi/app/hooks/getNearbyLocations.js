@@ -49,6 +49,7 @@ export default getNearbyLocations = (data) => {
         latitude: item.latitude,
         longitude: item.longitude,
         objectid: item.objectid,
+        locInfo: item.location,
       });
     }
   });
