@@ -11,7 +11,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "splash": {
-        "image": "./app/assets/img/splash-screens/ios/splash.png",
+        "image": "./app/assets/img/splash-screens/ios/splashy.png",
         "resizeMode": "cover",
         "backgroundColor": "#ffffff"
       },
