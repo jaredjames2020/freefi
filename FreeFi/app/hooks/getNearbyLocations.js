@@ -1,10 +1,11 @@
 import { useState } from "react";
+import userLocation from "../hooks/getUserLocation";
 
 export default getNearbyLocations = (data) => {
-  const userLocation = useLocation();
+  const nearbyLocation = userLocation();
   const location = {
-    latitude: userLocation.latitude,
-    longitude: userLocation.longitude,
+    latitude: nearbyLocation.latitude,
+    longitude: nearbyLocation.longitude,
   };
   const distanceArray = [];
 
