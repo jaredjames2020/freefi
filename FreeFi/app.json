@@ -1,8 +1,10 @@
 {
   "expo": {
     "name": "FreeFi",
+    "description": "This app helps you find free wifi locations in New York City.",
     "slug": "FreeFi",
     "version": "1.0.0",
+    "platforms": ["ios", "android"],
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
     "updates": {
@@ -11,11 +13,24 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "splash": {
-        "image": "./app/assets/img/splash-screens/ios/splashy.png",
+        "image": "./app/assets/img/splash-screens/ios/splashy2.png",
         "resizeMode": "cover",
         "backgroundColor": "#ffffff"
       },
       "supportsTablet": true
+    },
+    "android": {
+      "permissions": ["ACCESS_COARSE_LOCATIONS", "ACCESS_FINE_LOCATION"],
+
+      "splash": {
+        "ldpi": "./app/assets/img/splash-screens/android/drawable-ldpi/splashy2.png",
+        "mdpi": "./app/assets/img/splash-screens/android/drawable-mdpi/splashy2.png",
+        "hdpi": "./app/assets/img/splash-screens/android/drawable-hdpi/splashy2.png",
+        "xhdpi": "./app/assets/img/splash-screens/android/drawable-xhdpi/splashy2.png",
+        "xxhdpi": "./app/assets/img/splash-screens/android/drawable-xxhdpi/splashy2.png",
+        "xxxhdpi": "./app/assets/img/splash-screens/android/drawable-xxxhdpi/splashy2.png",
+        "resizeMode": "cover"
+      }
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
