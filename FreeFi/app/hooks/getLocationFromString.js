@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import * as Location from "expo-location";
+import BottomSearchInput from "../components/BottomSearchInput";
 
-export default getLocationFromString = () => {
+export default getLocationFromString = (input) => {
   const [location, setLocation] = useState({});
 
   const getLocation = async () => {
@@ -9,7 +10,7 @@ export default getLocationFromString = () => {
       const { granted } = await Location.requestPermissionsAsync();
       if (!granted) return;
 
-      let result = await Location.geocodeAsync("Times Square, NYC");
+      let result = await Location.geocodeAsync(input);
       setLocation({ result });
     } catch (error) {
       console.log(error);
@@ -19,6 +20,9 @@ export default getLocationFromString = () => {
   useEffect(() => {
     getLocation();
   }, []);
+
+  // console.log(location);
+  // console.log(BottomSearchInput().value);
 
   return location;
 };
