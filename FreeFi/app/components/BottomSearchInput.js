@@ -2,9 +2,29 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, Button } from "react-native";
 import useTextInput from "../hooks/useTextInput";
 import getLocationFromString from "../hooks/getLocationFromString";
+import * as Location from "expo-location";
+import getNearbyLocations from "../hooks/getNearbyLocations";
 
-const BottomSearchInput = () => {
+export default BottomSearchInput = () => {
   const [text, setText] = useState();
+  const [location, setLocation] = useState({});
+
+  const getLocation = async (input) => {
+    try {
+      const { granted } = await Location.requestPermissionsAsync();
+      if (!granted) return;
+
+      let result = await Location.geocodeAsync(input);
+      setLocation({ result });
+    } catch (error) {
+      console.log(error);
+    }
+    return location;
+  };
+
+  useEffect(() => {
+    getLocation();
+  }, []);
 
   return (
     <View>
@@ -22,12 +42,7 @@ const BottomSearchInput = () => {
         value={text}
         placeholder="Search location"
       />
-      <Button
-        onPress={() => getLocationFromString(text)}
-        title="Click"
-      ></Button>
+      <Button onPress={() => getLocation(text)} title="Click"></Button>
     </View>
   );
 };
-
-export default BottomSearchInput;
