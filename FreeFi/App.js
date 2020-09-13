@@ -1,96 +1,63 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-// import { StyleSheet, Text, View } from "react-native";
-import WelcomeScreen from "./app/screens/WelcomeScreen";
-
-import "react-native-gesture-handler";
-import {
-  StyleSheet,
-  Button,
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-
+import * as React from "react";
+import Modal from "react-native-modal";
+import { StyleSheet, SafeAreaView, Button, View, Text } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import WelcomeScreen from "./app/screens/WelcomeScreen";
+import SideMenu from "./app/screens/SideMenu";
+import NeighborhoodScreen from "./app/screens/NeighborhoodScreen";
+import MapScreen from "./app/screens/MapScreen";
 
-const Drawer = createDrawerNavigator();
-const Stack = createStackNavigator();
-
-const NavigationDrawerStructure = (props) => {
-  //Structure for the navigatin Drawer
-  const toggleDrawer = () => {
-    //Props to open/close the drawer
-    props.navigationProps.toggleDrawer();
-  };
-
+function HomeScreen({ navigation }) {
   return (
-    <View style={{ flexDirection: "row" }}>
-      <TouchableOpacity onPress={() => toggleDrawer()}>
-        {/*Donute Button Image */}
-        <Image
-          source={{
-            uri:
-              "https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png",
-          }}
-          style={{ width: 25, height: 25, marginLeft: 5 }}
+    <SafeAreaView style={styles.safeAreaView}>
+      {/* <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}> */}
+      <View style={styles.container}>
+        <MapScreen />
+        <Button
+          onPress={() => navigation.navigate("Search")}
+          title="Go to notifications"
         />
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-function firstScreenStack({ navigation }) {
-  return (
-    <Stack.Navigator initialRouteName="WelcomeScreen">
-      <Stack.Screen
-        name="WelcomeScreen"
-        component={WelcomeScreen}
-        options={{
-          title: "Welcome", //Set Header Title
-          headerLeft: () => (
-            <NavigationDrawerStructure navigationProps={navigation} />
-          ),
-          headerStyle: {
-            backgroundColor: "#f4511e", //Set Header color
-          },
-          headerTintColor: "#fff", //Set Header text color
-          headerTitleStyle: {
-            fontWeight: "bold", //Set Header text style
-          },
-        }}
-      />
-    </Stack.Navigator>
+      </View>
+    </SafeAreaView>
   );
 }
+
+function SearchScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <NeighborhoodScreen />
+      <Button onPress={() => navigation.goBack()} title="Go back home" />
+    </View>
+  );
+}
+
+const Drawer = createDrawerNavigator();
+
+const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  container: {
+    margin: 12,
+    flex: 1,
+  },
+  title: {
+    marginTop: 15,
+    marginBottom: 10,
+    color: "#444",
+    fontSize: 14,
+  },
+});
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        drawerContentOptions={{
-          activeTintColor: "#e91e63",
-          itemStyle: { marginVertical: 5 },
-        }}
-      >
-        <Drawer.Screen
-          name="WelcomeScreen"
-          options={{ drawerLabel: "First page Option" }}
-          component={firstScreenStack}
-        />
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Search" component={SearchScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
