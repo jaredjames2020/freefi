@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as Location from "expo-location";
+import { Alert } from "react-native";
 
 export default userLocation = () => {
   const [location, setLocation] = useState({});
@@ -13,7 +14,7 @@ export default userLocation = () => {
       } = await Location.getLastKnownPositionAsync();
       setLocation({ latitude, longitude });
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
