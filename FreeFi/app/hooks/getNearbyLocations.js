@@ -1,4 +1,3 @@
-import { useState } from "react";
 import userLocation from "../hooks/getUserLocation";
 
 export default getNearbyLocations = (data) => {
