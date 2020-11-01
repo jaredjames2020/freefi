@@ -20,6 +20,8 @@ FreeWiFiNYC is an application that helps you find free WiFi and charging station
 - Run npm start
 - Follow instructions to run Android emulator, iOS simulator, or web
 
+## <br/>
+
 ### Features
 
 - Search your current location to identify free wifi and charging stations in NYC.
