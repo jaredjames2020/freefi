@@ -11,6 +11,15 @@ FreeWiFiNYC is an application that helps you find free WiFi and charging station
 
 ---
 
+### Installation
+
+- git clone git@github.com:jaredjames2020/freefi.git
+- cd into directory
+- Run bundle install to freefi dependencies
+- Install Expo.io [Installation Guide] (https://docs.expo.io/get-started/installation/)
+- Run npm start
+- Follow instructions to run Android emulator, iOS simulator, or web
+
 ### Features
 
 - Search your current location to identify free wifi and charging stations in NYC.
