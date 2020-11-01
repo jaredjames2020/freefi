@@ -1,14 +1,22 @@
 # FreeFi
 
-###Overview
+### Overview
+
 FreeFi is an application that helps you find free WiFi and charging stations in NYC.
 
 GIF
 
 Demo
+<br/>
 
-###Features
+### Features
 
-###Technology
+<br/>
 
-###Installation
+### Technology
+
+<br/>
+
+### Installation
+
+<br/>
