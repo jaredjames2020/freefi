@@ -13,7 +13,8 @@ FreeWiFiNYC is an application that helps you find free WiFi and charging station
 
 ### Features
 
-Search your current location to identify free wifi and charging stations in NYC.
+- Search your current location to identify free wifi and charging stations in NYC.
+- Available for use on both Android and iOS.
 
 ## <br/>
 
